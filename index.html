@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <tempo-dia></tempo-dia>
+    <market-cap></market-cap>
+  </div>
+
+  <script type="module">
+    import TempoDia from "./components/TempoDia.js" // Importando o componente TempoDia
+    Vue.component("TempoDia", TempoDia) // Registrando o componente TempoDia
+
+    import MarketCap from "./components/MarketCap.js" // Importando o componente MarketCap
+
+    const vm = new Vue({
+      el: '#app',
+      components: {
+        MarketCap
+      }
+    })
+  </script>
+
+  <script src="./vue.js"></script>
+</body>
+
+</html>
