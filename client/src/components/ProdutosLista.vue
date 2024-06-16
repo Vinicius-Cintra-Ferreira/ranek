@@ -40,26 +40,26 @@ export default {
   computed: {
     url() {
       const query = serialize(this.$route.query);
-      return `/produto?_limit=${this.produtosPorPagina}${query}`;
+      return `/?_limit=${this.produtosPorPagina}${query}`;
     }
   },
   methods: {
-    // getProdutos() {
-    //   this.produtos = null;
-    //   window.setTimeout(() => {
-    //     api.get(this.url).then(response => {
-    //       this.produtosTotal = Number(response.headers["x-total-count"]);
-    //       this.produtos = response.data;
-    //     });
-    //   }, 1500);
-    // }
     getProdutos() {
-      fetch("http://localhost:3000/produto")
-        .then(response => response.json())
-        .then(response => {
-          this.produtos = response;
+      this.produtos = null;
+      window.setTimeout(() => {
+        api.get(this.url).then(response => {
+          this.produtosTotal = Number(response.headers["x-total-count"]);
+          this.produtos = response.data;
         });
+      }, 1500);
     }
+    // getProdutos() {
+    //   fetch("http://localhost:3000/")
+    //     .then(response => response.json())
+    //     .then(response => {
+    //       this.produtos = response;
+    //     });
+    // }
   },
   watch: {
     url() {

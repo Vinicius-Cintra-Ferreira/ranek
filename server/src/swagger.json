@@ -1,0 +1,191 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Ranek API",
+    "description": "API de Produtos criada para o projeto Ranek",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Vinicius Cintra",
+      "email": "vinicintra3101@outlook.com"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:3000",
+        "description": "Servidor Local"
+      }
+    ]
+  },
+  "paths": {
+    "/produtos": {
+      "get": {
+        "tags": [
+          "Produtos"
+        ],
+        "summary": "Listar Produtos",
+        "description": "Retorna uma lista de produtos",
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/produto/{id}": {
+      "get": {
+        "tags": [
+          "Produtos"
+        ],
+        "summary": "Obter Produto",
+        "description": "Retorna um produto pelo ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID do produto",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso"
+          }
+        },
+        "404": {
+          "description": "Produto não encontrado"
+        }
+      }
+    },
+    "/cadastraProduto": {
+      "post": {
+        "tags": [
+          "Produtos"
+        ],
+        "summary": "Cadastrar Produto",
+        "description": "Cadastra um novo produto",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "nome": {
+                    "type": "string"
+                  },
+                  "usuario_id": {
+                    "type": "string"
+                  },
+                  "preco": {
+                    "type": "number"
+                  },
+                  "vendido": {
+                    "type": "boolean"
+                  },
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "imagem": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Produto cadastrado"
+          }
+        }
+      }
+    },
+    "/updateProduto/{id}": {
+      "put": {
+        "tags": [
+          "Produtos"
+        ],
+        "summary": "Atualizar Produto",
+        "description": "Atualiza um produto pelo ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID do produto",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": {
+                    "type": "string"
+                  },
+                  "preco": {
+                    "type": "number"
+                  },
+                  "vendido": {
+                    "type": "boolean"
+                  },
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "imagem": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Produto atualizado"
+          }
+        }
+      }
+    },
+    "/deleteProduto/{id}": {
+      "delete": {
+        "tags": [
+          "Produtos"
+        ],
+        "summary": "Deletar Produto",
+        "description": "Deleta um produto pelo ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID do produto",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Produto deletado"
+          }
+        }
+      }
+    }
+  }
+}
